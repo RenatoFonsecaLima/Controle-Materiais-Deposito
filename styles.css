@@ -1,0 +1,108 @@
+body {
+    font-family: Arial, sans-serif;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.container {
+    background-color: rgba(230, 29, 129, 0.8); /* Fundo */
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(46, 202, 15, 0.1);
+    width: 500px; /* Aumentado para acomodar a tabela */
+    text-align: center;
+}
+
+.container h2 {
+    color: #333;
+}
+
+.material-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 25px;
+}
+
+.material-table th, .material-table td {
+    border: 1px solid #776d10;
+    padding: 25px;
+    text-align: left;
+}::-ms-clear
+
+.material-table th {
+    background-color: #ee3f3f;/*Fundo da caixa central*/
+}   
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    color: #666;
+}
+
+.form-group input, .form-group select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin: 0 auto;
+    display: block;
+}
+
+.form-group input:focus, .form-group select:focus {
+    border-color: #121213; /*Cor quando seleciona o caixa*/
+    outline: none;
+}
+
+.btn {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    background-color: #0a0a0a;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+    display: block;
+    margin: 0 auto;
+    text-align: center;
+    text-decoration: none;
+}
+
+.btn-back {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    background-color: #eb5151;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+    display: block;
+    margin: 10px auto 0;
+    text-align: center;
+    text-decoration: none;
+}
+
+.btn-back:hover, .btn:hover {
+    background-color: #e99586;
+}
+
+.error {
+    color: red;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.success {
+    color: green;
+    margin-bottom: 15px;
+    text-align: center;
+}
