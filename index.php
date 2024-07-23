@@ -11,6 +11,7 @@
             <a href="add_material.php" class="btn">Adicionar Material</a>
             <a href="retirar_material.php" class="btn">Retirar Material</a>
             <a href="devolver_material.php" class="btn">Devolver Material</a>
+            <a href="relatorio_material.php" class="btn">Relatório Material</a>
             <a href="excluir_material.php" class="btn">Excluir Material</a>
         </div>
     </div>
