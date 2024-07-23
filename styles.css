@@ -2,7 +2,7 @@ body {
     font-family: Arial, sans-serif;
     background-size: cover;
     background-color: #4d4949; /* Cor de fundo clara para a página inteira */
-    display: flex;
+    display: block;
     justify-content: center;
     align-items: center;
     height: 100vh;
@@ -10,35 +10,84 @@ body {
 }
 
 .container {
-    background-color: rgba(19, 18, 18, 0.8); /* Fundo do quadro central*/
-    padding: 25px;
+    background-color: rgba(43, 42, 42, 0.8); /* Fundo */
+    padding: 20px;
     border-radius: 8px;
-    box-shadow: 0 0 10px rgba(46, 202, 15, 0.1);
-    width: 500px; /* Aumentado para acomodar a tabela */
-    text-align: center;
+    box-shadow: 0 0 10px rgba(218, 20, 191, 0.1);
+    width: 100%;
+    max-width: 1000px; /* Defina um tamanho máximo para a largura do container */
+    margin: 0 auto; /* Centraliza o container */
+    overflow: auto; /* Adiciona rolagem se o conteúdo exceder o container */
+    box-sizing: border-box; /* Inclui padding e border no cálculo da largura */
 }
 
 .container h2 {
-    color: #da870a;
+    color: #da870a; /* Altere a cor do título para garantir visibilidade */
+    margin-top: 0; /* Remove a margem superior */
 }
 
+/* CSS para a tabela */
 .material-table {
-    width: 95%;
+    width: 100%;
     border-collapse: collapse;
-    margin-bottom: 35px;
-    color:rgba(255, 255, 255, 0.8)
+    overflow-x: auto; /* Permite rolar horizontalmente se necessário */
+    display: block; /* Faz a tabela se comportar como um bloco */
+    margin-top: 20px; /* Adiciona uma margem superior para separar a tabela do título */
+    color: white; /* Define a cor do texto como branco */
 }
 
 .material-table th, .material-table td {
-    border: 2px solid ;
-    padding: 18px;
+    border: 1px solid #ddd;
+    padding: 8px;
     text-align: left;
-}::-ms-clear
+    color: white;  /*Define a cor do texto como branco */
+}
+
+.material-table thead {
+    background-color: #f4f4f4b2;
+}
 
 .material-table th {
-    background-color: #9e0606;/*Fundo da caixa central*/
-    color:rgba(255, 255, 255, 0.8)
-}   
+    position: -webkit-sticky; /* Para navegadores WebKit */
+    position: sticky;
+    top: 0;
+    background-color: #55442a;
+    z-index: 1;
+}
+
+/* Adaptação para telas menores */
+@media screen and (max-width: 768px) {
+    .material-table {
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+        color: white; /* Define a cor do texto como branco */
+    }
+    .material-table thead {
+        display: none;
+    }
+    .material-table tr {
+        display: block;
+        margin-bottom: 10px;
+    }
+    .material-table td {
+        display: block;
+        text-align: right;
+        position: relative;
+        padding-left: 50%;
+        white-space: nowrap;
+        color: white; /* Define a cor do texto como branco para telas menores */
+    }
+    .material-table td::before {
+        content: attr(data-label);
+        position: absolute;
+        left: 0;
+        width: 50%;
+        padding-left: 10px;
+        font-weight: bold;
+        white-space: nowrap;
+    }
+}
 
 .form-group {
     margin-bottom: 15px;
@@ -48,6 +97,7 @@ body {
     display: block;
     margin-bottom: 7px;
     color: #fbfcfd;
+    margin: 0 auto;
 }
 
 .form-group input, .form-group select {
