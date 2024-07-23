@@ -1,5 +1,8 @@
 <!DOCTYPE html>
 <html>
+    <header>
+        <title>Depositos</title>
+    </header>
 <head>
     <title>Controle de Depósito</title>
     <link rel="stylesheet" type="text/css" href="styles.css">
