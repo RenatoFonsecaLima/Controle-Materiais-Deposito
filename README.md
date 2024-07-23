@@ -8,6 +8,7 @@ Este é um projeto de controle de estoque desenvolvido em PHP, utilizando HeidiS
 - Exclusão de material
 - Retirada de material 
 - Devolução de material
+- Relatorio de material
 
 ## Tecnologias Utilizadas
 
@@ -60,6 +61,7 @@ Este é um projeto de controle de estoque desenvolvido em PHP, utilizando HeidiS
 - **Excluir Material**: Selecione um produto da lista e clique em remover.
 - **Retirada do Material**: Selecione o material a ser retirado.
 - **Devolução do Material**: Selecione o material a ser devolvido.
+- **Relatorio**: Relatorio dos materiais e status dos mesmos.
 
 
 ## Contribuição
