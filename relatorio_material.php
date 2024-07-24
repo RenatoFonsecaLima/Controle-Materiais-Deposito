@@ -27,9 +27,16 @@
                 movimentacoes mov 
             ON 
                 mat.id = mov.material_id
+            LEFT JOIN 
+                (SELECT material_id, MAX(data_retirada) AS ultima_retirada
+                FROM movimentacoes
+                GROUP BY material_id) ultima_mov
+            ON 
+                mat.id = ultima_mov.material_id AND mov.data_retirada = ultima_mov.ultima_retirada
             ORDER BY 
-                mat.id
-        ";
+                mat.id AND ultima_mov.material_id"
+            ;
+
 
         $result = $conn->query($sql);
 
@@ -58,7 +65,7 @@
                 echo "<tr>";
                 echo "<td data-label='Nome'>" . $row['nome'] . "</td>";
                 echo "<td data-label='Descrição'>" . $row['descricao'] . "</td>";
-                echo "<td data-label='Foto'><img src='uploads/" . $row['foto'] . "' alt='Foto' width='100'></td>";
+                echo "<td data-label='Foto'><img src='uploads/" . $row['foto'] . "' alt='Foto' width='90'></td>";
                 echo "<td data-label='Disponível'>" . $disponivel . "</td>";
                 echo "<td data-label='Retirado Por'>" . $retirado_por . "</td>";
                 echo "<td data-label='Destino'>" . $destino . "</td>";

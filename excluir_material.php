@@ -8,19 +8,39 @@
     <div class="container">
         <h2>Excluir Material</h2>
         <form action="excluir_material.php" method="post">
-            <div class="form-group">
-                <label for="material_id">Material:</label>
-                <select name="material_id" class="form-control">
+            <table class="material-table">
+            <tbody>
                     <?php
                     include 'conexao.php';
                     $result = $conn->query("SELECT id, nome FROM materiais WHERE disponivel = 1");
+                    if ($result->num_rows > 0) {
+                        echo "<table class='material-table'>";
+                        echo "<thead>
+                                <tr>
+                                    <th>Material</th>
+                                    <th>Selecionar</th>
+                                </tr>
+                              </thead>";
+                        echo "<tbody>";
                     while ($row = $result->fetch_assoc()) {
-                        echo "<option value='" . $row['id'] . "'>" . $row['nome'] . "</option>";
+                        if (empty($row)) {
+                            echo "<tr><td colspan='2'>NÃO HÁ MATERIAL CADASTRADO</td></tr>";
+                        } else {
+                            echo "<tr>";
+                            echo "<td>" . $row['nome'] . "</td>";
+                            echo "<td><input type='radio' name='material_id' value='" . $row['id'] . "' required></td>";
+                            echo "</tr>";
+                        }
                     }
-                    $conn->close();
-                    ?>
-                </select>
-            </div>
+                    echo "</tbody>";
+                    echo "</table>";
+                } else {
+                    echo "<p class='error'>Nenhum material encontrado.</p>";
+                }
+                $conn->close();
+                ?>
+            </tbody>
+        </table>
             <div class="form-group">
                 <label for="motivo">Motivo da Exclusão:</label>
                 <textarea name="motivo" class="form-control" required></textarea>
