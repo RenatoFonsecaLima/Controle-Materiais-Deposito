@@ -1,161 +1,283 @@
-body {
-    font-family: Arial, sans-serif;
-    background-size: cover;
-    background-color: #4d4949; /* Cor de fundo clara para a página inteira */
-    display: block;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    margin: 0;
-}
+    body {
+        font-family: Arial, sans-serif;
+        background-size: cover;
+        background-color: #4d4949;
+        /* Cor de fundo clara para a página inteira */
+        display: block;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+    }
 
-.container {
-    background-color: rgba(43, 42, 42, 0.8); /* Fundo */
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(218, 20, 191, 0.1);
-    width: 100%;
-    max-width: 1000px; /* Defina um tamanho máximo para a largura do container */
-    margin: 0 auto; /* Centraliza o container */
-    overflow: auto; /* Adiciona rolagem se o conteúdo exceder o container */
-    box-sizing: border-box; /* Inclui padding e border no cálculo da largura */
-}
+    .container {
+        background-color: rgba(43, 42, 42, 0.8);
+        /* Fundo */
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(218, 20, 191, 0.1);
+        width: 100%;
+        max-width: 1000px;
+        /* Defina um tamanho máximo para a largura do container */
+        margin: 0 auto;
+        /* Centraliza o container */
+        overflow: auto;
+        /* Adiciona rolagem se o conteúdo exceder o container */
+        box-sizing: border-box;
+        /* Inclui padding e border no cálculo da largura */
+    }
 
-.container h2 {
-    color: #da870a; /* Altere a cor do título para garantir visibilidade */
-    margin-top: 0; /* Remove a margem superior */
-}
+    .container h2 {
+        color: #da870a;
+        /* Altere a cor do título para garantir visibilidade */
+        margin-top: 0;
+        /* Remove a margem superior */
+    }
 
-/* CSS para a tabela */
-.material-table {
-    width: 100%;
-    border-collapse: collapse;
-    overflow-x: auto; /* Permite rolar horizontalmente se necessário */
-    display: block; /* Faz a tabela se comportar como um bloco */
-    margin-top: 20px; /* Adiciona uma margem superior para separar a tabela do título */
-    color: white; /* Define a cor do texto como branco */
-}
-
-.material-table th, .material-table td {
-    border: 1px solid #ddd;
-    padding: 8px;
-    text-align: left;
-    color: white;  /*Define a cor do texto como branco */
-}
-
-.material-table thead {
-    background-color: #f4f4f4b2;
-}
-
-.material-table th {
-    position: -webkit-sticky; /* Para navegadores WebKit */
-    position: sticky;
-    top: 0;
-    background-color: #55442a;
-    z-index: 1;
-}
-
-/* Adaptação para telas menores */
-@media screen and (max-width: 768px) {
+    /* CSS para a tabela */
     .material-table {
-        display: block;
+        width: 100%;
+        border-collapse: collapse;
         overflow-x: auto;
-        white-space: nowrap;
-        color: white; /* Define a cor do texto como branco */
-    }
-    .material-table thead {
-        display: none;
-    }
-    .material-table tr {
+        /* Permite rolar horizontalmente se necessário */
         display: block;
-        margin-bottom: 10px;
+        /* Faz a tabela se comportar como um bloco */
+        margin-top: 20px;
+        /* Adiciona uma margem superior para separar a tabela do título */
+        color: white;
+        /* Define a cor do texto como branco */
     }
+
+    .material-table th,
     .material-table td {
+        border: 1px solid #ddd;
+        padding: 8px;
+        text-align: left;
+        color: white;
+        /*Define a cor do texto como branco */
+    }
+
+    .material-table thead {
+        background-color: #f4f4f4b2;
+    }
+
+    .material-table th {
+        position: -webkit-sticky;
+        /* Para navegadores WebKit */
+        position: sticky;
+        top: 0;
+        background-color: #55442a;
+        z-index: 1;
+    }
+
+    /* Adaptação para telas menores */
+    @media screen and (max-width: 768px) {
+        .material-table {
+            display: block;
+            overflow-x: auto;
+            white-space: nowrap;
+            color: white;
+            /* Define a cor do texto como branco */
+        }
+
+        .material-table thead {
+            display: none;
+        }
+
+        .material-table tr {
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .material-table td {
+            display: block;
+            text-align: right;
+            position: relative;
+            padding-left: 50%;
+            white-space: nowrap;
+            color: white;
+            /* Define a cor do texto como branco para telas menores */
+        }
+
+        .material-table td::before {
+            content: attr(data-label);
+            position: absolute;
+            left: 0;
+            width: 50%;
+            padding-left: 10px;
+            font-weight: bold;
+            white-space: nowrap;
+        }
+    }
+
+    .form-group {
+        margin-bottom: 15px;
+    }
+
+    .form-group label {
         display: block;
-        text-align: right;
+        margin-bottom: 7px;
+        color: #fbfcfd;
+        margin: 0 auto;
+    }
+
+    .form-group input,
+    .form-group select {
+        width: 85%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        margin: 0 auto;
+        display: block;
+    }
+
+    .form-group input:focus,
+    .form-group select:focus {
+        border-color: #121213;
+        /*Cor quando seleciona o caixa*/
+        outline: none;
+    }
+
+    .form-group select.form-control {
+        background-color: #da870a;
+        /* Fundo amarelo */
+        color: #fffefe;
+        /* Texto preto */
+        border: 2px solid #da870a;
+        /* Borda clara */
+        border-radius: 5px;
+        /* Bordas arredondadas */
+        padding: 10px;
+        /* Espaçamento interno */
+        box-sizing: border-box;
+        /* Inclui padding e border no cálculo da largura */
+        appearance: none;
+        /* Remove a aparência padrão do select */
+        -webkit-appearance: none;
+        /* Remove a aparência padrão no Safari */
+        -moz-appearance: none;
+        /* Remove a aparência padrão no Firefox */
+        font-size: 25px;
+        /* Tamanho da fonte */
+        cursor: pointer;
+        /* Muda o cursor para indicar que é clicável */
+    }
+
+
+    .form-cat select.form-cat {
+        background-color: #da870a;
+        /* Fundo amarelo */
+        color: #fffefe;
+        /* Texto preto */
+        border: 2px solid #da870a;
+        /* Borda clara */
+        border-radius: 5px;
+        /* Bordas arredondadas */
+        padding: 10px;
+        /* Espaçamento interno */
+        box-sizing: border-box;
+        /* Inclui padding e border no cálculo da largura */
+        appearance: none;
+        /* Remove a aparência padrão do select */
+        -webkit-appearance: none;
+        /* Remove a aparência padrão no Safari */
+        -moz-appearance: none;
+        /* Remove a aparência padrão no Firefox */
+        font-size: 25px;
+        /* Tamanho da fonte */
+        cursor: pointer;
+        /* Muda o cursor para indicar que é clicável */
+    }
+
+    /* Estilo para o select com seta personalizada */
+    .select-wrapper {
         position: relative;
-        padding-left: 50%;
-        white-space: nowrap;
-        color: white; /* Define a cor do texto como branco para telas menores */
+        display: inline-block;
+        color: #fbfcfd;
     }
-    .material-table td::before {
-        content: attr(data-label);
+
+
+
+    .categoriaOp {
+        flex-direction: row;
+        margin: .5rem;
+        padding: 1rem;
+        border-radius: 1rem;
+        margin-bottom: 10px;
+        right: 220px;
+        border-radius: 10px;
+        background-color: #f1e4e4;
+        color: #000000;
+   
+    }
+    .categoriaName{
+
+        color: #ffffff;
+   
+    }
+
+    .select-wrapper::after {
+        /*content: '▼';*/
+        /* Adiciona uma seta personalizada */
         position: absolute;
-        left: 0;
-        width: 50%;
-        padding-left: 10px;
-        font-weight: bold;
-        white-space: nowrap;
+        top: 60%;
+        right: 25px;
+        transform: translateY(-50%);
+        color: #ffffff;
+        pointer-events: all
     }
-}
 
-.form-group {
-    margin-bottom: 15px;
-}
+    .btn {
+        width: 85%;
+        padding: 18px;
+        border: 1px solid #000;
+        /* Adiciona uma borda de 1px sólida preta */
+        border-radius: 8px;
+        background-color: #eb533f;
+        color: #fff;
+        font-size: 18px;
+        cursor: pointer;
+        display: block;
+        margin: 0 auto;
+        text-align: center;
+        text-decoration: none;
+    }
 
-.form-group label {
-    display: block;
-    margin-bottom: 7px;
-    color: #fbfcfd;
-    margin: 0 auto;
-}
+    .btn-back {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #000;
+        /* Adiciona uma borda de 1px sólida preta */
+        border-radius: 4px;
+        background-color: #eb5151;
+        color: #fff;
+        font-size: 16px;
+        cursor: pointer;
+        display: block;
+        margin: 10px auto 0;
+        text-align: center;
+        text-decoration: none;
+    }
 
-.form-group input, .form-group select {
-    width: 85%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    margin: 0 auto;
-    display: block;
-}
+    .btn-back:hover,
+    .btn:hover {
+        background-color: #e99586;
+    }
 
-.form-group input:focus, .form-group select:focus {
-    border-color: #121213; /*Cor quando seleciona o caixa*/
-    outline: none;
-}
+    .error {
+        color: red;
+        margin-bottom: 15px;
+        text-align: center;
+    }
 
-.btn {
-    width: 85%;
-    padding: 18px;
-    border: 1px solid #000; /* Adiciona uma borda de 1px sólida preta */
-    border-radius: 8px;
-    background-color: #eb533f;
-    color: #fff;
-    font-size: 18px;
-    cursor: pointer;
-    display: block;
-    margin: 0 auto;
-    text-align: center; 
-    text-decoration: none;
-}
+    .mensagem {
+        color: #fff !important;
+        margin-bottom: 18px !important;
+        text-align: center !important;
+    }
 
-.btn-back {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #000; /* Adiciona uma borda de 1px sólida preta */
-    border-radius: 4px;
-    background-color: #eb5151;
-    color: #fff;
-    font-size: 16px;
-    cursor: pointer;
-    display: block;
-    margin: 10px auto 0;
-    text-align: center;
-    text-decoration: none;
-}
-
-.btn-back:hover, .btn:hover {
-    background-color: #e99586;
-}
-
-.error {
-    color: red;
-    margin-bottom: 15px;
-    text-align: center;
-}
-
-.success {
-    color: green;
-    margin-bottom: 15px;
-    text-align: center;
-}
+    .success {
+        color: green;
+        margin-bottom: 15px;
+        text-align: center;
+    }

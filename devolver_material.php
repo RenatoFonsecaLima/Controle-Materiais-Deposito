@@ -8,21 +8,35 @@
     <div class="container">
             <h2>Devolver Material</h2>
             <form action="devolver_material.php" method="post">
-                <div class="form-group">
-                    <label for="movimentacao_id">Movimentação:</label>
-                    <select name="movimentacao_id" class="form-control">
-                    <?php
-                    include 'conexao.php';
-                    $result = $conn->query("SELECT m.id, mat.nome FROM movimentacoes m JOIN materiais mat ON m.material_id = mat.id WHERE m.data_devolucao IS NULL");
-                    while ($row = $result->fetch_assoc()) {
-                        echo "<option value='" . $row['id'] . "'>" . $row['nome'] . "</option>";
-                    }
-                    $conn->close();
-                    ?>
-                </select>
-            </div>
-            <input type="submit" name="submit" value="Devolver" class="btn">
-        </form>
+                <table class ="materia-table">
+                    <tbody>
+                        <?php
+                        include 'conexao.php';
+                        $result = $conn->query("SELECT m.id, mat.nome FROM movimentacoes m JOIN materiais mat ON m.material_id = mat.id WHERE m.data_devolucao IS NULL");
+                        if ($result->num_rows > 0) {
+                            echo "<table class='material-table'>";
+                             echo "<thead>
+                                <tr>
+                                    <th>Material</th>
+                                    <th>Selecionar</th>
+                                </tr>
+                              </thead>";
+                        echo "<tbody>";
+                            while ($row = $result->fetch_assoc()) {
+                                echo "<tr>";
+                                echo "<td>" . $row['nome'] . "</td>";
+                                echo "<td><input type='radio' name='movimentacao_id' value='" . $row['id'] . "' required></td>";
+                                echo "</tr>";
+                            }
+                        }else{
+                            echo "<tr><td colspan='2'><p class='error'>Não há material para devolução.</p></td></tr>";
+                        }    
+                            $conn->close();
+                        ?>
+                    </tbody>
+                </table>                
+                 <input type="submit" name="submit" value="Devolver" class="btn">
+            </form>
         <?php
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             include 'conexao.php';
