@@ -1,6 +1,6 @@
 # Controle de Materiais Deposito
 
-Este é um projeto de controle de estoque desenvolvido em PHP, utilizando HeidiSQL para gerenciar o banco de dados e XAMPP para o servidor local.
+Este é um projeto de controle de estoque desenvolvido em PHP, utilizando HeidiSQL para gerenciar o banco de dados e WAMP para o servidor local.
 
 ## Funcionalidades
 
