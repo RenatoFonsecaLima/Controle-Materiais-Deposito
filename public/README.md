@@ -14,14 +14,14 @@ Este é um projeto de controle de estoque desenvolvido em PHP, utilizando HeidiS
 
 - **PHP**: Linguagem principal do projeto
 - **HeidiSQL**: Ferramenta de administração do banco de dados
-- **WAMP**: Plataforma de desenvolvimento PHP
+- **WAMP64**: Ambiente de desenvolvimento
 - **VSCode**: Editor de código
 
 ## Instalação
 
 ### Pré-requisitos
 
-- [XAMPP](https://wampserver.aviatechno.net/) instalado
+- [WAMP](https://wampserver.aviatechno.net/)) instalado
 - [HeidiSQL](https://www.heidisql.com/) instalado
 - [Git](https://git-scm.com/) instalado
 
@@ -31,7 +31,7 @@ Este é um projeto de controle de estoque desenvolvido em PHP, utilizando HeidiS
     ```bash
     git clone https://github.com/RenatoFonsecaLima/Controle-Materiais-Deposito
     ```
-2. Mova o projeto para a pasta `www` do WAMP:
+2. Mova o projeto para a pasta `WWW` do WAMP:
     ```bash
     mv controle-materiais-deposito C:\wamp\www\
     ```
