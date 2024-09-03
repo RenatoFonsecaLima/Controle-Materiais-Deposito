@@ -30,10 +30,9 @@
                     <button type="submit" class="categoriaOp">Gerar Relatório</button>
                 </div>
             </form>
-
             <?php
-require_once 'C:\Users\renato\vendor\autoload.php'; // Inclua o autoload do Composer
-ob_start(); // Inicia o buffer de saída
+
+require_once 'C:\wamp64\www\estoque\vendor\autoload.php'; // Inclua o autoload do Composer
 include 'conexao.php';
 
 // Recupera e sanitiza os dados do formulário
@@ -114,11 +113,12 @@ if (!isset($stmt)) {
 }
 
 if ($format === 'emPdf') {
+
+
+    
     if ($result->num_rows > 0) {
-        //Limpa buffer 
-        ob_end_clean();
         // Cria um novo documento PDF
-        $pdf = new TCPDF();
+        $pdf = new TCPDF('L', 'mm', 'A4', true, 'UTF-8', false); // 'L' para paisagem, 'A4' para o tamanho do papel
         
         // Configura o documento PDF
         $pdf->SetCreator('PDF_CREATOR');
@@ -132,13 +132,13 @@ if ($format === 'emPdf') {
 
         // Define o título
         $pdf->SetFont('helvetica', 'B', 14);
-        $pdf->Cell(0, 10, 'Relatório de Materiais', 0, 1, 'C');
+        $pdf->Cell(0, 8, 'Relatório de Materiais', 0, 1, 'C');
 
         // Define o cabeçalho da tabela
         $header = array('Nome', 'Categoria', 'Descrição', 'Disponível', 'Retirado Por', 'Destino', 'Data Retirada', 'Data Devolução');
-        $w = array(30, 30, 50, 20, 30, 30, 30, 30); // Largura das colunas
+        $w = array(30, 25, 45, 25, 30, 30, 30, 33); // Largura das colunas
 
-        $pdf->SetFillColor(200, 220, 255);
+        $pdf->SetFillColor(235, 83, 63);
         $pdf->SetTextColor(0);
         $pdf->SetDrawColor(0, 0, 0);
         $pdf->SetLineWidth(0.3);
@@ -151,7 +151,7 @@ if ($format === 'emPdf') {
         $pdf->Ln();
 
         // Define a fonte para o corpo da tabela
-        $pdf->SetFont('helvetica', '', 12);
+        $pdf->SetFont('helvetica', '', 8);
 
         // Adiciona os dados da tabela
         while ($row = $result->fetch_assoc()) {
@@ -161,22 +161,19 @@ if ($format === 'emPdf') {
             $data_retirada = $row['data_retirada'] ? $row['data_retirada'] : '-';
             $data_devolucao = $row['data_devolucao'] ? $row['data_devolucao'] : '-';
 
-            $pdf->Cell($w[0], 10, htmlspecialchars($row['nome']), 1);
-            $pdf->Cell($w[1], 10, htmlspecialchars($row['categoria']), 1);
-            $pdf->Cell($w[2], 10, htmlspecialchars($row['descricao']), 1);
-            $pdf->Cell($w[3], 10, $disponivel, 1);
-            $pdf->Cell($w[4], 10, $retirado_por, 1);
-            $pdf->Cell($w[5], 10, $destino, 1);
-            $pdf->Cell($w[6], 10, $data_retirada, 1);
-            $pdf->Cell($w[7], 10, $data_devolucao, 1);
+            $pdf->MultiCell($w[0], 10, htmlspecialchars($row['nome']), 1, 'C', 0, 0);
+            $pdf->MultiCell($w[1], 10, htmlspecialchars($row['categoria']), 1, 'C', 0, 0);
+            $pdf->MultiCell($w[2], 10, htmlspecialchars($row['descricao']), 1, 'C', 0, 0);
+            $pdf->MultiCell($w[3], 10, $disponivel, 1, 'C', 0, 0);
+            $pdf->MultiCell($w[4], 10, $retirado_por, 1, 'C', 0, 0);
+            $pdf->MultiCell($w[5], 10, $destino, 1, 'C', 0, 0);
+            $pdf->MultiCell($w[6], 10, $data_retirada, 1, 'C', 0, 0);
+            $pdf->MultiCell($w[7], 10, $data_devolucao, 1, 'C', 0, 0);
             $pdf->Ln();
         }
-
-        // Gera o PDF
-        $pdf->Output('relatorio_materiais.pdf', 'D');
-        // Limpa o buffer de saída e evita que dados sejam enviados ao navegador
-        ob_clean();
-
+          // Gera o PDF
+          ob_end_clean();
+        $pdf->Output('RelatorioMateriais_' . $categoria . time() . '.pdf', 'I');
     } else {
         echo "<p class='error'>Nenhum material encontrado para a categoria selecionada.</p>";
     }
